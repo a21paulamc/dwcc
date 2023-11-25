@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obxecto Window</title>
+</head>
+<body>
+    <form action="#">
+        <div id="contedor">
+            <label for="si_non">Desexa abrir unha nova ventá?</label>
+            <p>
+                <button type="button" id="si">Sí</button>
+                <button type="button" id="non">Non</button>
+                <button type="button" id="pechar">Pechar ventá</button>
+                <button type="button" id="mover">Mover ventá</button>
+                <button type="button" id="aumentar">Aumentar ventá</button>
+                <button type="button" id="redimensionar">Redimensionar ventá</button>
+            </p>
+        </div>
+    </form>
+</body>
+
+<script>
+    "use strict";
+
+    let botonNon = document.getElementById("non");
+    botonNon.addEventListener("click", apareceTexto);
+
+    let botonSi = document.getElementById("si");
+    botonSi.addEventListener("click", abrirVentana);
+
+    let pecharVenta = document.getElementById("pechar");
+    pecharVenta.addEventListener("click", pecharVentana);
+
+    let moverVenta = document.getElementById("mover");
+    moverVenta.addEventListener("click", moverVentana);
+
+    let aumentarVenta = document.getElementById("aumentar");
+    aumentarVenta.addEventListener("click", aumentarVentana);
+
+    let redimensionarVenta = document.getElementById("redimensionar");
+    redimensionarVenta.addEventListener("click", redimensionarVentana);
+
+
+    let ventana;
+
+
+    function apareceTexto() {
+        if (!ventana) {
+            let div = document.getElementById("contedor");
+            let h3 = document.createElement("h3");
+            h3.innerHTML = "Non abriremos unha nova ventá";
+            div.appendChild(h3);
+        }
+    }
+
+    function abrirVentana() {
+        ventana = window.open("ventana.html", "nueva", "left=400,top=400,width=300,height=300,menubar=no,toolbar=no");
+        return ventana;
+    }
+
+    function pecharVentana() {
+        if (ventana.closed) {
+            let div = document.getElementById("contedor");
+            let erro = document.createElement("h3");
+            erro.innerHTML = "Erro. Non hai ventás abertas";
+            div.appendChild(erro);
+        } else {
+            ventana.close();
+        }
+    }
+
+    function moverVentana() {
+        ventana.focus();
+        ventana.moveBy(400, 400);
+        //ventana.moveTo(600, 600);
+    }
+
+    function aumentarVentana() {
+        ventana.focus();
+        ventana.resizeBy(50, 50);
+    }
+
+    function redimensionarVentana() {
+        ventana.focus();
+        ventana.resizeTo(500, 500);
+    }
+</script>
+
+
+<style>
+    #contedor {
+        border: 1px solid #888;
+        display: inline-block;
+        padding:20px;
+    }
+   
+</style>
+
+</html>
