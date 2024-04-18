@@ -106,7 +106,7 @@ email.addEventListener("focusout", () => {
     errores.innerHTML = "";
     } else {
       errores.innerHTML = "Error en el email";
-      edad.focus();
+      email.focus();
     }
 }, false);
 
@@ -231,7 +231,7 @@ function getCookie(nombreCookie) {
   //modificamos la cookie con el nuevo valor para que no se resetee a 0
   setCookie(nombreCookie, valorIntentos);
   //mostramos en el campo intentos
-  intentos.innerHTML = `${nombreCookie} = ${valorIntentos}`;
+  intentos.innerHTML = `${nombreCookie} de envíos de formulario = ${valorIntentos}`;
 }
 
 
